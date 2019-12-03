@@ -129,6 +129,7 @@ const checkAuditResult = (id: string) => {
         done = true;
         const percent = document.querySelector(".accessible-percent") as HTMLDivElement;
         percent.innerHTML = result.scoreAccessibility.toString() + "%";
+        track("complete-audit", id, result.scoreAccessibility.toString());
         resetForm("results");
       }
     })
@@ -152,3 +153,28 @@ form.addEventListener("submit", event => {
   }
   return false;
 });
+
+try {
+  const deal = JSON.parse(atob(new URL(window.location.href).searchParams.get("deal"))) as {
+    heroText: string;
+    offerName: string;
+    priceAfter: string;
+    priceBefore: string;
+    url: string;
+  };
+  if (deal) {
+    const heroText = document.querySelector("header p");
+    const offerName = document.querySelector(".offer");
+    const priceBefore = document.querySelector("del.amount strong:last-child");
+    const priceAfter = document.querySelector("strong.amount strong:last-child");
+
+    if (deal.heroText && heroText) heroText.innerHTML = deal.heroText;
+    if (deal.url && url) url.value = deal.url;
+    if (deal.url && website) website.value = deal.url;
+    if (deal.offerName && offerName) offerName.innerHTML = deal.offerName;
+    if (deal.priceBefore && priceBefore) priceBefore.innerHTML = deal.priceBefore;
+    if (deal.priceAfter && priceAfter) priceAfter.innerHTML = deal.priceAfter;
+  }
+} catch (error) {
+  console.log(error);
+}
