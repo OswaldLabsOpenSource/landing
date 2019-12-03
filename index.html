@@ -14,11 +14,50 @@
     </header>
     <main>
       <div class="container">
-        <form>
-          <label for="url">Website URL</label>
-          <input type="text" placeholder="example.com" id="url" required>
-          <ul class="autocomplete"></ul>
-          <button type="submit">Test your website for free (30 sec) &rarr;</button>
+        <form class="audit">
+          <div class="loading" hidden>
+            <img alt="" src="https://static.oswaldlabs.com/05183-ajax-loader.gif">
+            <div><span class="loading-state">0</span>%</div>
+          </div>
+          <div class="thanks" hidden>
+            <div>Thanks!</div>
+            <div>We'll send you an email soon with your personalized report.</div>
+            <a href="#signup">Get a demo of our accessibility plugin</a>
+          </div>
+          <div class="error" hidden>
+            <div class="f">
+              <div>
+                <div>We need more time to complete your audit. You can leave your email and we'll get in touch with you.</div>
+                <div class="intro">Learn how to make your website more accessible with our <span>free report</span>.</div>
+              </div>
+              <div>
+                <label for="sendemail">Email</label>
+                <input type="email" placeholder="you@example.com" id="sendemail">
+                <button type="submit">Get free report</button>
+              </div>
+            </div>
+          </div>
+          <div class="results" hidden>
+            <div class="f">
+              <div>
+                <div>Your site is</div>
+                <div class="accessible-percent">10%</div>
+                <div>accessibile</div>
+                <div class="intro">Learn how to make your website more accessible with our <span>free report</span>.</div>
+              </div>
+              <div>
+                <label for="sendemail">Email</label>
+                <input type="email" placeholder="you@example.com" id="sendemail">
+                <button type="submit">Get free report</button>
+              </div>
+            </div>
+          </div>
+          <div class="initial">
+            <label for="url">Website URL</label>
+            <input type="text" placeholder="example.com" id="url">
+            <ul class="autocomplete"></ul>
+            <button type="submit">Test your website for free (30 sec) &rarr;</button>
+          </div>
         </form>
         <div class="row">
           <div>
@@ -59,8 +98,8 @@
           </ul>
         </div>
         <div class="cta">Get started now</div>
-        <form action="https://formspree.io/sales@oswaldlabs.com" method="POST" target="_blank">
-          <div>
+        <form action="https://formspree.io/sales@oswaldlabs.com" method="POST" target="_blank" id="signup">
+          <div class="f">
             <div>
               <label for="email">Email</label>
               <input type="email" placeholder="you@example.com" id="email" required>
@@ -70,7 +109,7 @@
               <input type="phone" placeholder="Enter your phone number" id="phone" required>
             </div>
           </div>
-          <div>
+          <div class="f">
             <div style="padding-right: 0">
               <label for="website">Website URL</label>
               <input type="text" placeholder="example.com" id="website" required>
@@ -85,5 +124,6 @@
       </div>
     </main>
     <script src="index.ts"></script>
+    <script src="https://platform-beta.oswaldlabs.com/v1/agastya/load/landing.js" async></script>
   </body>
 </html>

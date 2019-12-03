@@ -52,7 +52,7 @@ main {
     margin-top: -5rem;
     box-sizing: border-box;
     margin-bottom: 4rem;
-    > div {
+    > div.f {
       display: flex;
       + div {
         margin-top: 1rem;
@@ -85,7 +85,7 @@ main {
       width: 100%;
       &:focus {
         outline: none;
-        border: 0.25rem solid #370BEC;
+        border: 0.25rem solid #370bec;
       }
       + label {
         margin-top: 1rem;
@@ -99,7 +99,7 @@ button {
   padding: 0.75rem 2rem;
   margin-top: 1rem;
   box-sizing: border-box;
-  background-color: #370BEC;
+  background-color: #370bec;
   border: none;
   color: #fff;
   border-radius: 10rem;
@@ -133,8 +133,8 @@ h2 {
   line-height: 1;
   button {
     background-color: transparent;
-    color: #370BEC;
-    border: 0.25rem solid #370BEC;
+    color: #370bec;
+    border: 0.25rem solid #370bec;
     margin-top: 2.5rem;
   }
   + .price {
@@ -232,5 +232,42 @@ ul.autocomplete {
         font-weight: normal;
       }
     }
+  }
+}
+
+.loading {
+  > div {
+    font-size: 300%;
+    line-height: 1;
+    margin-top: 1rem;
+  }
+}
+
+.accessible-percent {
+  font-size: 400%;
+  line-height: 1;
+  margin: 0.5rem 0;
+}
+
+.f {
+  display: flex;
+  > * {
+    flex: 1 0 0;
+  }
+}
+
+.intro {
+  margin-top: 1rem;
+  color: #370bec;
+}
+
+.thanks {
+  > div:first-child {
+    color: #370bec;
+    font-size: 200%;
+  }
+  > a:last-child {
+    display: inline-block;
+    margin-top: 1rem;
   }
 }
