@@ -1,3 +1,166 @@
 body {
-  background-color: gray;
+  font-family: "Public Sans", sans-serif;
+  margin: 0;
+  line-height: 1.5;
+  background-color: whitesmoke;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+}
+
+header {
+  background: linear-gradient(150deg, #4e30e2, #05d5ff);
+  color: #fff;
+  text-align: center;
+  padding: 5rem 0 8rem 0;
+  p {
+    margin: 0;
+    &:first-child {
+      max-width: 800px;
+      margin: auto;
+      line-height: 1.2;
+      font-size: 250%;
+      margin-bottom: 2rem;
+    }
+    &:nth-child(2) {
+      font-size: 150%;
+      max-width: 600px;
+      margin: auto;
+    }
+  }
+}
+
+span {
+  box-shadow: 0 0.2rem 0 yellow;
+}
+
+main {
+  form {
+    text-align: center;
+    background-color: #fff;
+    border: 1px solid #eee;
+    border-radius: 0.5rem;
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.25);
+    font-size: 125%;
+    padding: 1.5rem 2rem;
+    margin-top: -5rem;
+    box-sizing: border-box;
+    margin-bottom: 4rem;
+    > div {
+      display: flex;
+      + div {
+        margin-top: 1rem;
+      }
+      > div {
+        flex: 1 0 0;
+        box-sizing: border-box;
+        &:nth-child(2n) {
+          padding-left: 1rem;
+        }
+        &:nth-child(2n - 1) {
+          padding-right: 1rem;
+        }
+      }
+    }
+    &:last-of-type {
+      margin-top: 2.5rem;
+    }
+    label {
+      display: block;
+      margin-bottom: 1rem;
+    }
+    input {
+      font: inherit;
+      padding: 1rem 2rem;
+      box-sizing: border-box;
+      border: 0.25rem solid #eee;
+      border-radius: 10rem;
+      font-size: 125%;
+      width: 100%;
+      &:focus {
+        outline: none;
+        border: 0.25rem solid #370BEC;
+      }
+      + label {
+        margin-top: 1rem;
+      }
+    }
+  }
+}
+
+button {
+  font: inherit;
+  padding: 0.75rem 2rem;
+  margin-top: 1rem;
+  box-sizing: border-box;
+  background-color: #370BEC;
+  border: none;
+  color: #fff;
+  border-radius: 10rem;
+  font-size: 130%;
+}
+
+h2 {
+  text-transform: uppercase;
+  font-size: 110%;
+  opacity: 0.75;
+  letter-spacing: 0.2rem;
+  + ol {
+    font-size: 150%;
+    li {
+      margin-bottom: 2rem;
+    }
+  }
+}
+
+.row {
+  display: flex;
+  > * {
+    flex: 1 0 0;
+  }
+}
+
+.price {
+  text-align: center;
+  padding-top: 2.5rem;
+  font-size: 120%;
+  line-height: 1;
+  button {
+    background-color: transparent;
+    color: #370BEC;
+    border: 0.25rem solid #370BEC;
+    margin-top: 2.5rem;
+  }
+  + .price {
+    margin-top: 2.5rem;
+  }
+  > div {
+    &.time {
+      margin-top: 1rem;
+    }
+    &:nth-child(2) {
+      font-size: 400%;
+      font-weight: bold;
+      color: #370bec;
+      margin: 1rem 0;
+    }
+    del {
+      opacity: 0.5;
+      font-size: 80%;
+    }
+    .offer {
+      border-radius: 0.2rem;
+      text-transform: uppercase;
+      font-size: 90%;
+      display: inline-block;
+      padding: 0.5rem;
+      background-color: yellow;
+    }
+  }
 }
