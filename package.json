@@ -1,7 +1,7 @@
 {
   "scripts": {
-    "build": "parcel build index.html",
-    "start": "parcel index.html"
+    "build": "parcel build index.html thanks.html",
+    "start": "parcel index.html thanks.html"
   },
   "devDependencies": {
     "parcel": "^1.12.4",
