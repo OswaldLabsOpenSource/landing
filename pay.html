@@ -25,39 +25,35 @@
       <div id="error-message"></div>
 
       <script>
-        (function() {
-          var stripe = Stripe("pk_live_2khUYvJReOob9xJ2QG4l1UoQ");
+(function() {
+  var stripe = Stripe('pk_live_2khUYvJReOob9xJ2QG4l1UoQ');
 
-          var checkoutButton = document.getElementById(
-            "checkout-button-plan_FYV7ryq0jZjdHS"
-          );
-          checkoutButton.addEventListener("click", function() {
-            // When the customer clicks on the button, redirect
-            // them to Checkout.
-            stripe
-              .redirectToCheckout({
-                items: [{ plan: "plan_FYV7ryq0jZjdHS", quantity: 1 }],
+  var checkoutButton = document.getElementById('checkout-button-plan_H7vaxZuO9tYAUM');
+  checkoutButton.addEventListener('click', function () {
+    // When the customer clicks on the button, redirect
+    // them to Checkout.
+    stripe.redirectToCheckout({
+      items: [{plan: 'plan_H7vaxZuO9tYAUM', quantity: 1}],
 
-                // Do not rely on the redirect to the successUrl for fulfilling
-                // purchases, customers may not always reach the success_url after
-                // a successful payment.
-                // Instead use one of the strategies described in
-                // https://stripe.com/docs/payments/checkout/fulfillment
-                successUrl: "https://landing.oswaldlabs.com/thanks",
-                cancelUrl: "https://landing.oswaldlabs.com/error",
-              })
-              .then(function(result) {
-                if (result.error) {
-                  // If `redirectToCheckout` fails due to a browser or network
-                  // error, display the localized error message to your customer.
-                  var displayError = document.getElementById("error-message");
-                  displayError.textContent = result.error.message;
-                }
-              });
-          });
-          checkoutButton.click();
-        })();
-      </script>
+      // Do not rely on the redirect to the successUrl for fulfilling
+      // purchases, customers may not always reach the success_url after
+      // a successful payment.
+      // Instead use one of the strategies described in
+      // https://stripe.com/docs/payments/checkout/fulfillment
+      successUrl: 'https://landing.oswaldlabs.com/thanks',
+      cancelUrl: 'https://landing.oswaldlabs.com/error',
+    })
+    .then(function (result) {
+      if (result.error) {
+        // If `redirectToCheckout` fails due to a browser or network
+        // error, display the localized error message to your customer.
+        var displayError = document.getElementById('error-message');
+        displayError.textContent = result.error.message;
+      }
+    });
+  });
+})();
+</script>
     </main>
     <script
       src="https://platform-beta.oswaldlabs.com/v1/agastya/load/landing.js"
