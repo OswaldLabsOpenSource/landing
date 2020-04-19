@@ -7,53 +7,40 @@
       href="https://fonts.googleapis.com/css?family=Public+Sans:400,700&display=swap"
       rel="stylesheet"
     />
+    <script src="https://js.stripe.com/v3"></script>
   </head>
   <body>
     <main>
-      <!-- Load Stripe.js on your website. -->
-      <script src="https://js.stripe.com/v3"></script>
-
-      <!-- Create a button that your customers click to complete their purchase. Customize the styling to suit your branding. -->
       <button
         style="background-color:#6772E5;color:#FFF;padding:8px 12px;border:0;border-radius:4px;font-size:1em;display:block;margin:10%;zoom:2"
-        id="checkout-button-plan_FYV7ryq0jZjdHS"
+        id="checkout-button"
         role="link"
       >
         Checkout
       </button>
-
       <div id="error-message"></div>
-
       <script>
-(function() {
-  var stripe = Stripe('pk_live_2khUYvJReOob9xJ2QG4l1UoQ');
-
-  var checkoutButton = document.getElementById('checkout-button-plan_H7vaxZuO9tYAUM');
-  checkoutButton.addEventListener('click', function () {
-    // When the customer clicks on the button, redirect
-    // them to Checkout.
-    stripe.redirectToCheckout({
-      items: [{plan: 'plan_H7vaxZuO9tYAUM', quantity: 1}],
-
-      // Do not rely on the redirect to the successUrl for fulfilling
-      // purchases, customers may not always reach the success_url after
-      // a successful payment.
-      // Instead use one of the strategies described in
-      // https://stripe.com/docs/payments/checkout/fulfillment
-      successUrl: 'https://landing.oswaldlabs.com/thanks',
-      cancelUrl: 'https://landing.oswaldlabs.com/error',
-    })
-    .then(function (result) {
-      if (result.error) {
-        // If `redirectToCheckout` fails due to a browser or network
-        // error, display the localized error message to your customer.
-        var displayError = document.getElementById('error-message');
-        displayError.textContent = result.error.message;
-      }
-    });
-  });
-})();
-</script>
+        (function() {
+          var stripe = Stripe("pk_live_2khUYvJReOob9xJ2QG4l1UoQ");
+          var checkoutButton = document.getElementById("checkout-button");
+          var urlParams = new URLSearchParams(window.location.search);
+          checkoutButton.addEventListener("click", function() {
+            stripe
+              .redirectToCheckout({
+                items: [{ plan: urlParams.get("plan"), quantity: 1 }],
+                successUrl: "https://landing.oswaldlabs.com/thanks",
+                cancelUrl: "https://landing.oswaldlabs.com/error",
+                customerEmail: urlParams.get("customerEmail") || undefined,
+              })
+              .then(function(result) {
+                if (result.error) {
+                  var displayError = document.getElementById("error-message");
+                  displayError.textContent = result.error.message;
+                }
+              });
+          });
+        })();
+      </script>
     </main>
     <script
       src="https://platform-beta.oswaldlabs.com/v1/agastya/load/landing.js"
